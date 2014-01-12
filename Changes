@@ -1,5 +1,11 @@
 Revision history for Acme-Override-INET
 
+0.002     2014-01-12 11:04:13-05:00 America/New_York
+
+    - Add IO::Socket::INET's docs for convenience
+
+    - Properly credit Paul and Matt as authors
+
 0.001     2014-01-12 09:53:06-05:00 America/New_York
 
     - First release

@@ -3,7 +3,7 @@ use warnings;
 
 package Acme::Override::INET;
 # ABSTRACT: Monkeypatch IO::Socket::INET to use IO::Socket::IP
-our $VERSION = '0.001'; # VERSION
+our $VERSION = '0.002'; # VERSION
 
 1;
 
@@ -22,7 +22,7 @@ Acme::Override::INET - Monkeypatch IO::Socket::INET to use IO::Socket::IP
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 B<WARNING>: This may break your system
 
@@ -56,9 +56,23 @@ L<https://github.com/dagolden/Acme-Override-INET>
 
   git clone https://github.com/dagolden/Acme-Override-INET.git
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 David Golden <dagolden@cpan.org>
+
+=item *
+
+Paul Evans <pevans@cpan.org>
+
+=item *
+
+Matthew Horsfall <wolfsage@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

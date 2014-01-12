@@ -3,7 +3,7 @@ NAME
     IO::Socket::IP
 
 VERSION
-    version 0.001
+    version 0.002
 
     WARNING: This may break your system
 
@@ -29,8 +29,12 @@ SUPPORT
 
       git clone https://github.com/dagolden/Acme-Override-INET.git
 
-AUTHOR
-    David Golden <dagolden@cpan.org>
+AUTHORS
+    *   David Golden <dagolden@cpan.org>
+
+    *   Paul Evans <pevans@cpan.org>
+
+    *   Matthew Horsfall <wolfsage@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2014 by David Golden.
