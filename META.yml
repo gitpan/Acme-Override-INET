@@ -1,0 +1,44 @@
+---
+abstract: 'Monkeypatch IO::Socket::INET to use IO::Socket::IP'
+author:
+  - 'David Golden <dagolden@cpan.org>'
+build_requires:
+  ExtUtils::MakeMaker: 0
+  File::Spec::Functions: 0
+  List::Util: 0
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.17
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.009, CPAN::Meta::Converter version 2.133380'
+license: apache
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Acme-Override-INET
+no_index:
+  directory:
+    - t
+    - xt
+    - examples
+    - corpus
+  package:
+    - DB
+provides:
+  Acme::Override::INET:
+    file: lib/Acme/Override/INET.pm
+    version: 0.001
+requires:
+  IO::Socket::IP: 0.25
+  Module::Metadata: 0
+  Socket: 0
+  base: 0
+  perl: 5.006
+  strict: 0
+  warnings: 0
+resources:
+  bugtracker: https://github.com/dagolden/Acme-Override-INET/issues
+  homepage: https://github.com/dagolden/Acme-Override-INET
+  repository: https://github.com/dagolden/Acme-Override-INET.git
+version: 0.001
+x_authority: cpan:DAGOLDEN
