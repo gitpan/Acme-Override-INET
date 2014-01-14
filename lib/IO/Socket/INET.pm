@@ -10,24 +10,36 @@ package
 
 our $VERSION = 1.34;
 
-# $IO::Socket::VERSION is set too late in a circular load,
-# so we cheat and find it without loading
+# some $VERSIONs are set too late during circular loading,
+# so we cheat and find them without loading
 #
 BEGIN {
-    if ( $INC{"IO/Socket.pm"} && !defined $IO::Socket::VERSION ) {
-        require Module::Metadata;
-        my $mm = Module::Metadata->new_from_file( $INC{"IO/Socket.pm"} );
-        #<<< No perltidy
-        $IO::Socket::VERSION    # hide from Module::Metadata itself
-            = $mm->version("IO::Socket");
-        #>>>
+    no strict 'refs';
+    for my $mod (qw/IO::Socket IO::Socket::IP/) {
+        ( my $file = $mod ) =~ s{::}{/}g;
+        $file .= ".pm";
+        if ( $INC{$file} && !defined ${"${mod}::VERSION"} ) {
+            require Module::Metadata;
+            my $mm = Module::Metadata->new_from_file( $INC{$file} );
+            ${"${mod}::VERSION"} = $mm->version($mod);
 
+        }
+    }
+}
+
+# Flag use of this module during testing
+BEGIN {
+    if ( $ENV{HARNESS_ACTIVE} && $INC{"Test/Builder.pm"} ) {
+        Test::Builder->new->diag(
+            "Acme::Override::INET replaced IO::Socket::INET with IO::Socket::IP");
     }
 }
 
 use IO::Socket::IP 0.25 -register;
 use base qw( IO::Socket::IP );
 use Socket qw( PF_INET );
+
+no warnings 'redefine'; # new defined twice due to circular load
 
 sub new {
     my $class = shift;
@@ -49,7 +61,7 @@ IO::Socket::INET - Object interface for AF_INET domain sockets
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 B<WARNING: This is a fake IO::Socket::INET as installed via Acme::Override::INET>.
 
