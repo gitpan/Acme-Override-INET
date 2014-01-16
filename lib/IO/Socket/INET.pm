@@ -27,17 +27,18 @@ BEGIN {
     }
 }
 
-# Flag use of this module during testing
-BEGIN {
-    if ( $ENV{HARNESS_ACTIVE} && $INC{"Test/Builder.pm"} ) {
-        Test::Builder->new->diag(
-            "Acme::Override::INET replaced IO::Socket::INET with IO::Socket::IP");
-    }
-}
-
 use IO::Socket::IP 0.25 -register;
 use base qw( IO::Socket::IP );
 use Socket qw( PF_INET );
+
+# Flag use of this module during testing; do after IO::Socket::IP loads so $VERSION is set
+BEGIN {
+    if ( $ENV{HARNESS_ACTIVE} && $INC{"Test/Builder.pm"} ) {
+        Test::Builder->new->diag(
+            "Acme::Override::INET replaced IO::Socket::INET with IO::Socket::IP $IO::Socket::IP::VERSION"
+        );
+    }
+}
 
 no warnings 'redefine'; # new defined twice due to circular load
 
@@ -61,7 +62,7 @@ IO::Socket::INET - Object interface for AF_INET domain sockets
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 B<WARNING: This is a fake IO::Socket::INET as installed via Acme::Override::INET>.
 

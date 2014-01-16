@@ -1,5 +1,9 @@
 Revision history for Acme-Override-INET
 
+0.004     2014-01-16 14:51:19-05:00 America/New_York
+
+    - Adds IO::Socket::IP's $VERSION do diagnostic output during testing
+
 0.003     2014-01-14 13:30:05-05:00 America/New_York
 
     - Add diagnostics about INET override when running under a test harness

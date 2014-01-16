@@ -3,7 +3,7 @@ NAME
     IO::Socket::IP
 
 VERSION
-    version 0.003
+    version 0.004
 
     WARNING: This may break your system
 

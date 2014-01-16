@@ -23,7 +23,7 @@ on 'configure' => sub {
 };
 
 on 'develop' => sub {
-  requires "Dist::Zilla" => "5.011";
+  requires "Dist::Zilla" => "5.012";
   requires "Dist::Zilla::PluginBundle::DAGOLDEN" => "0.055";
   requires "File::Spec" => "0";
   requires "File::Temp" => "0";
